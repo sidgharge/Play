@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="io.ebean.Model"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="javax.persistence.Id"/>
+<fullyQualifiedTypeName name="models.Task"/>
+<fullyQualifiedTypeName name="play.data.Form"/>
+<fullyQualifiedTypeName name="play.data.FormFactory"/>
+<fullyQualifiedTypeName name="io.ebean.Finder"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.fasterxml.jackson.databind.JsonNode"/>
+<fullyQualifiedTypeName name="play.libs.Json"/>
+</qualifiedTypeNameHistroy>

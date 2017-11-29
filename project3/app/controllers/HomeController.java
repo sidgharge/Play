@@ -1,11 +1,17 @@
 package controllers;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.concurrent.FutureTask;
+
+import javax.inject.Inject;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
 import models.Task;
 import play.libs.Json;
+import play.libs.concurrent.HttpExecutionContext;
 import play.mvc.*;
 
 /**
@@ -46,5 +52,36 @@ public class HomeController extends Controller {
     	Task.find.deleteById(String.valueOf(id));
         return ok();
     }
-
+    
+    public CompletionStage<Result> asyncTask(){
+    	System.out.println("Main thread: " + Thread.currentThread().getId());
+        CompletableFuture.supplyAsync(() -> hi());
+        CompletableFuture.supplyAsync(() -> hi());
+        return CompletableFuture.supplyAsync(() -> hello()).thenApply(answer -> {
+        	System.out.println("After response thread: " + Thread.currentThread().getId());
+            return ok("answer was " + answer);
+        });
+    }
+    
+    private static CompletionStage<String> calculateResponse() {
+    	System.out.println("In calculate thread: " + Thread.currentThread().getId());
+        return CompletableFuture.completedFuture("42");
+    }
+    
+    public String hello(){
+    	System.out.println("Hello thread: " + Thread.currentThread().getId());
+    	return "hello";
+    }
+    
+    public String hi(){
+    	try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		};
+    	System.out.println("Hi thread: " + Thread.currentThread().getId());
+    	return "hello";
+    }
+    
+    
 }

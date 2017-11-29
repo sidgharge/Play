@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bridgeit/Sid/Play/project3/conf/routes
-// @DATE:Tue Nov 28 18:06:10 IST 2017
+// @DATE:Wed Nov 29 13:05:39 IST 2017
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -50,6 +50,16 @@ package controllers.javascript {
       """
         function(id0) {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "tasks/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Integer]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:30
+    def asyncTask: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.asyncTask",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "async"})
         }
       """
     )

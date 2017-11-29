@@ -1,3 +1,2 @@
-[0m[[0m[31merror[0m] [0m[0m/home/bridgeit/Sid/Play/project3/conf/routes:27:1: no arguments allowed for nullary method updateTask: ()play.mvc.Result[0m
-[0m[[0m[31merror[0m] [0m[0mPUT		/tasks:id					controllers.HomeController.updateTask(id: Integer)[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/bridgeit/Sid/Play/project3/app/controllers/HomeController.java:77:1: unreported exception java.lang.InterruptedException; must be caught or declared to be thrown[0m
+[0m[[0m[31merror[0m] [0m[0m    	Thread.sleep(5000);;[0m

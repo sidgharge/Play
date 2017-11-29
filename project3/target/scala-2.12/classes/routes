@@ -25,3 +25,6 @@ DELETE	/tasks/:id					controllers.HomeController.deleteTask(id: Integer)
 
 #Update task
 PUT		/tasks/:id					controllers.HomeController.updateTask(id: Integer)
+
+#Async test
+GET		/async						controllers.HomeController.asyncTask()

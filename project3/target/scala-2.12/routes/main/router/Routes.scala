@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bridgeit/Sid/Play/project3/conf/routes
-// @DATE:Tue Nov 28 18:06:10 IST 2017
+// @DATE:Wed Nov 29 13:05:39 IST 2017
 
 package router
 
@@ -47,6 +47,7 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tasks""", """controllers.HomeController.addTask()"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tasks/""" + "$" + """id<[^/]+>""", """controllers.HomeController.deleteTask(id:Integer)"""),
     ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tasks/""" + "$" + """id<[^/]+>""", """controllers.HomeController.updateTask(id:Integer)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """async""", """controllers.HomeController.asyncTask()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -180,6 +181,24 @@ class Routes(
     )
   )
 
+  // @LINE:30
+  private[this] lazy val controllers_HomeController_asyncTask7_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("async")))
+  )
+  private[this] lazy val controllers_HomeController_asyncTask7_invoker = createInvoker(
+    HomeController_0.asyncTask(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "asyncTask",
+      Nil,
+      "GET",
+      this.prefix + """async""",
+      """Async test""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -223,6 +242,12 @@ class Routes(
     case controllers_HomeController_updateTask6_route(params@_) =>
       call(params.fromPath[Integer]("id", None)) { (id) =>
         controllers_HomeController_updateTask6_invoker.call(HomeController_0.updateTask(id))
+      }
+  
+    // @LINE:30
+    case controllers_HomeController_asyncTask7_route(params@_) =>
+      call { 
+        controllers_HomeController_asyncTask7_invoker.call(HomeController_0.asyncTask())
       }
   }
 }

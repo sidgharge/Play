@@ -1,7 +1,9 @@
 package models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import io.ebean.Finder;
 import io.ebean.Model;
@@ -15,6 +17,10 @@ public class Task extends Model {
 	public String title;
 	
 	public String content;
+	
+	@Lob
+	@Column(columnDefinition = "LONGBLOB")
+	public String image;
 	
 	public static Finder<String, Task> find = new Finder<>(Task.class);
 

@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bridgeit/Sid/Play/project3/conf/routes
-// @DATE:Wed Nov 29 13:05:39 IST 2017
+// @DATE:Thu Nov 30 18:57:02 IST 2017
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -54,12 +54,12 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:30
-    def asyncTask: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.asyncTask",
+    // @LINE:45
+    def imgBig: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.imgBig",
       """
         function() {
-          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "async"})
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "imgbig"})
         }
       """
     )
@@ -74,12 +74,72 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:39
+    def imgDownloadWithoutAsync: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.imgDownloadWithoutAsync",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "imgNoAsync"})
+        }
+      """
+    )
+  
     // @LINE:21
     def addTask: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.addTask",
       """
         function() {
           return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "tasks"})
+        }
+      """
+    )
+  
+    // @LINE:42
+    def imgSmall: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.imgSmall",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "imgsmall"})
+        }
+      """
+    )
+  
+    // @LINE:30
+    def simpleAsync: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.simpleAsync",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "async"})
+        }
+      """
+    )
+  
+    // @LINE:36
+    def imgDownload: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.imgDownload",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "img"})
+        }
+      """
+    )
+  
+    // @LINE:48
+    def readFile: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.readFile",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "read"})
+        }
+      """
+    )
+  
+    // @LINE:33
+    def failureAsync: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.failureAsync",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "async/failed"})
         }
       """
     )

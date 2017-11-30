@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bridgeit/Sid/Play/project3/conf/routes
-// @DATE:Wed Nov 29 13:05:39 IST 2017
+// @DATE:Thu Nov 30 18:57:02 IST 2017
 
 package router
 
@@ -47,7 +47,13 @@ class Routes(
     ("""POST""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tasks""", """controllers.HomeController.addTask()"""),
     ("""DELETE""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tasks/""" + "$" + """id<[^/]+>""", """controllers.HomeController.deleteTask(id:Integer)"""),
     ("""PUT""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """tasks/""" + "$" + """id<[^/]+>""", """controllers.HomeController.updateTask(id:Integer)"""),
-    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """async""", """controllers.HomeController.asyncTask()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """async""", """controllers.HomeController.simpleAsync()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """async/failed""", """controllers.HomeController.failureAsync()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """img""", """controllers.HomeController.imgDownload()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """imgNoAsync""", """controllers.HomeController.imgDownloadWithoutAsync()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """imgsmall""", """controllers.HomeController.imgSmall()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """imgbig""", """controllers.HomeController.imgBig()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """read""", """controllers.HomeController.readFile()"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -182,19 +188,127 @@ class Routes(
   )
 
   // @LINE:30
-  private[this] lazy val controllers_HomeController_asyncTask7_route = Route("GET",
+  private[this] lazy val controllers_HomeController_simpleAsync7_route = Route("GET",
     PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("async")))
   )
-  private[this] lazy val controllers_HomeController_asyncTask7_invoker = createInvoker(
-    HomeController_0.asyncTask(),
+  private[this] lazy val controllers_HomeController_simpleAsync7_invoker = createInvoker(
+    HomeController_0.simpleAsync(),
     play.api.routing.HandlerDef(this.getClass.getClassLoader,
       "router",
       "controllers.HomeController",
-      "asyncTask",
+      "simpleAsync",
       Nil,
       "GET",
       this.prefix + """async""",
       """Async test""",
+      Seq()
+    )
+  )
+
+  // @LINE:33
+  private[this] lazy val controllers_HomeController_failureAsync8_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("async/failed")))
+  )
+  private[this] lazy val controllers_HomeController_failureAsync8_invoker = createInvoker(
+    HomeController_0.failureAsync(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "failureAsync",
+      Nil,
+      "GET",
+      this.prefix + """async/failed""",
+      """Async fail test""",
+      Seq()
+    )
+  )
+
+  // @LINE:36
+  private[this] lazy val controllers_HomeController_imgDownload9_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("img")))
+  )
+  private[this] lazy val controllers_HomeController_imgDownload9_invoker = createInvoker(
+    HomeController_0.imgDownload(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "imgDownload",
+      Nil,
+      "GET",
+      this.prefix + """img""",
+      """Download image""",
+      Seq()
+    )
+  )
+
+  // @LINE:39
+  private[this] lazy val controllers_HomeController_imgDownloadWithoutAsync10_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("imgNoAsync")))
+  )
+  private[this] lazy val controllers_HomeController_imgDownloadWithoutAsync10_invoker = createInvoker(
+    HomeController_0.imgDownloadWithoutAsync(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "imgDownloadWithoutAsync",
+      Nil,
+      "GET",
+      this.prefix + """imgNoAsync""",
+      """Download image without async""",
+      Seq()
+    )
+  )
+
+  // @LINE:42
+  private[this] lazy val controllers_HomeController_imgSmall11_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("imgsmall")))
+  )
+  private[this] lazy val controllers_HomeController_imgSmall11_invoker = createInvoker(
+    HomeController_0.imgSmall(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "imgSmall",
+      Nil,
+      "GET",
+      this.prefix + """imgsmall""",
+      """Download smaller image""",
+      Seq()
+    )
+  )
+
+  // @LINE:45
+  private[this] lazy val controllers_HomeController_imgBig12_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("imgbig")))
+  )
+  private[this] lazy val controllers_HomeController_imgBig12_invoker = createInvoker(
+    HomeController_0.imgBig(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "imgBig",
+      Nil,
+      "GET",
+      this.prefix + """imgbig""",
+      """Download bigger image""",
+      Seq()
+    )
+  )
+
+  // @LINE:48
+  private[this] lazy val controllers_HomeController_readFile13_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("read")))
+  )
+  private[this] lazy val controllers_HomeController_readFile13_invoker = createInvoker(
+    HomeController_0.readFile(),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "readFile",
+      Nil,
+      "GET",
+      this.prefix + """read""",
+      """Read File""",
       Seq()
     )
   )
@@ -245,9 +359,45 @@ class Routes(
       }
   
     // @LINE:30
-    case controllers_HomeController_asyncTask7_route(params@_) =>
+    case controllers_HomeController_simpleAsync7_route(params@_) =>
       call { 
-        controllers_HomeController_asyncTask7_invoker.call(HomeController_0.asyncTask())
+        controllers_HomeController_simpleAsync7_invoker.call(HomeController_0.simpleAsync())
+      }
+  
+    // @LINE:33
+    case controllers_HomeController_failureAsync8_route(params@_) =>
+      call { 
+        controllers_HomeController_failureAsync8_invoker.call(HomeController_0.failureAsync())
+      }
+  
+    // @LINE:36
+    case controllers_HomeController_imgDownload9_route(params@_) =>
+      call { 
+        controllers_HomeController_imgDownload9_invoker.call(HomeController_0.imgDownload())
+      }
+  
+    // @LINE:39
+    case controllers_HomeController_imgDownloadWithoutAsync10_route(params@_) =>
+      call { 
+        controllers_HomeController_imgDownloadWithoutAsync10_invoker.call(HomeController_0.imgDownloadWithoutAsync())
+      }
+  
+    // @LINE:42
+    case controllers_HomeController_imgSmall11_route(params@_) =>
+      call { 
+        controllers_HomeController_imgSmall11_invoker.call(HomeController_0.imgSmall())
+      }
+  
+    // @LINE:45
+    case controllers_HomeController_imgBig12_route(params@_) =>
+      call { 
+        controllers_HomeController_imgBig12_invoker.call(HomeController_0.imgBig())
+      }
+  
+    // @LINE:48
+    case controllers_HomeController_readFile13_route(params@_) =>
+      call { 
+        controllers_HomeController_readFile13_invoker.call(HomeController_0.readFile())
       }
   }
 }

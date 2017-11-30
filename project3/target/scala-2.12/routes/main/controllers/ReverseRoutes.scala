@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bridgeit/Sid/Play/project3/conf/routes
-// @DATE:Wed Nov 29 13:05:39 IST 2017
+// @DATE:Thu Nov 30 18:57:02 IST 2017
 
 import play.api.mvc.Call
 
@@ -45,10 +45,10 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "tasks/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("id", id)))
     }
   
-    // @LINE:30
-    def asyncTask(): Call = {
+    // @LINE:45
+    def imgBig(): Call = {
       
-      Call("GET", _prefix + { _defaultPrefix } + "async")
+      Call("GET", _prefix + { _defaultPrefix } + "imgbig")
     }
   
     // @LINE:24
@@ -57,10 +57,46 @@ package controllers {
       Call("DELETE", _prefix + { _defaultPrefix } + "tasks/" + play.core.routing.dynamicString(implicitly[play.api.mvc.PathBindable[Integer]].unbind("id", id)))
     }
   
+    // @LINE:39
+    def imgDownloadWithoutAsync(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "imgNoAsync")
+    }
+  
     // @LINE:21
     def addTask(): Call = {
       
       Call("POST", _prefix + { _defaultPrefix } + "tasks")
+    }
+  
+    // @LINE:42
+    def imgSmall(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "imgsmall")
+    }
+  
+    // @LINE:30
+    def simpleAsync(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "async")
+    }
+  
+    // @LINE:36
+    def imgDownload(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "img")
+    }
+  
+    // @LINE:48
+    def readFile(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "read")
+    }
+  
+    // @LINE:33
+    def failureAsync(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "async/failed")
     }
   
   }

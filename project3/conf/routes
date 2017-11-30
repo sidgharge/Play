@@ -27,4 +27,22 @@ DELETE	/tasks/:id					controllers.HomeController.deleteTask(id: Integer)
 PUT		/tasks/:id					controllers.HomeController.updateTask(id: Integer)
 
 #Async test
-GET		/async						controllers.HomeController.asyncTask()
+GET		/async						controllers.HomeController.simpleAsync()
+
+#Async fail test
+GET		/async/failed				controllers.HomeController.failureAsync()
+
+#Download image
+GET		/img						controllers.HomeController.imgDownload()
+
+#Download image without async
+GET		/imgNoAsync					controllers.HomeController.imgDownloadWithoutAsync()
+
+#Download smaller image
+GET		/imgsmall					controllers.HomeController.imgSmall()
+
+#Download bigger image
+GET		/imgbig						controllers.HomeController.imgBig()
+
+#Read File
+GET		/read						controllers.HomeController.readFile()

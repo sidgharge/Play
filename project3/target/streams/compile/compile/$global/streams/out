@@ -1,2 +1,2 @@
-[0m[[0m[31merror[0m] [0m[0m/home/bridgeit/Sid/Play/project3/app/services/HomeService.java:31:1:  byte[] cannot be converted to java.lang.String[0m
-[0m[[0m[31merror[0m] [0m[0m			task.content = Base64.getEncoder().encode(out.toByteArray());[0m
+[0m[[0m[31merror[0m] [0m[0m/home/bridgeit/Sid/Play/project3/app/controllers/HomeController.java:77:1: variable a is already defined in method simpleAsync()[0m
+[0m[[0m[31merror[0m] [0m[0m		return CompletableFuture.allOf(future1, future2).thenApply((a) -> {[0m

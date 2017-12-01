@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bridgeit/Sid/Play/project3/conf/routes
-// @DATE:Thu Nov 30 18:57:02 IST 2017
+// @DATE:Fri Dec 01 18:53:37 IST 2017
 
 import play.api.mvc.Call
 
@@ -51,6 +51,12 @@ package controllers {
       Call("GET", _prefix + { _defaultPrefix } + "imgbig")
     }
   
+    // @LINE:54
+    def generateJWT(id:String): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "jwt/" + implicitly[play.api.mvc.PathBindable[String]].unbind("id", id))
+    }
+  
     // @LINE:24
     def deleteTask(id:Integer): Call = {
       
@@ -73,6 +79,12 @@ package controllers {
     def imgSmall(): Call = {
       
       Call("GET", _prefix + { _defaultPrefix } + "imgsmall")
+    }
+  
+    // @LINE:51
+    def parseJWT(jwt:String): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "jwt/" + implicitly[play.api.mvc.PathBindable[String]].unbind("jwt", jwt))
     }
   
     // @LINE:30

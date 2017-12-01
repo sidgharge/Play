@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bridgeit/Sid/Play/project3/conf/routes
-// @DATE:Thu Nov 30 18:57:02 IST 2017
+// @DATE:Fri Dec 01 18:53:37 IST 2017
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -64,6 +64,16 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:54
+    def generateJWT: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.generateJWT",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "jwt/" + (""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("id", id0)})
+        }
+      """
+    )
+  
     // @LINE:24
     def deleteTask: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.deleteTask",
@@ -100,6 +110,16 @@ package controllers.javascript {
       """
         function() {
           return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "imgsmall"})
+        }
+      """
+    )
+  
+    // @LINE:51
+    def parseJWT: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.parseJWT",
+      """
+        function(jwt0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "jwt/" + (""" + implicitly[play.api.mvc.PathBindable[String]].javascriptUnbind + """)("jwt", jwt0)})
         }
       """
     )

@@ -16,3 +16,7 @@ EclipseKeys.projectFlavor := EclipseProjectFlavor.Java           // Java project
 EclipseKeys.createSrc := EclipseCreateSrc.ValueSet(EclipseCreateSrc.ManagedClasses, EclipseCreateSrc.ManagedResources)  // Use .class files instead of generated .scala files for views and routes
 
 lazy val myProject = (project in file(".")).enablePlugins(PlayJava, PlayEbean)
+
+    libraryDependencies ++= Seq(
+      "com.nimbusds" % "nimbus-jose-jwt" % "3.8.2"
+    )

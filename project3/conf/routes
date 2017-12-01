@@ -46,3 +46,9 @@ GET		/imgbig						controllers.HomeController.imgBig()
 
 #Read File
 GET		/read						controllers.HomeController.readFile()
+
+#Parse JWT
+GET		/jwt/$jwt<[^.]*[.][^.]*[.][^.]*>			controllers.HomeController.parseJWT(jwt: String)
+
+#Generate JWT
+GET		/jwt/$id<[^.]*>						controllers.HomeController.generateJWT(id: String)

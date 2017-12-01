@@ -29,10 +29,7 @@ public class HomeService {
 			}
 			out.close();
 			in.close();
-			Task task = new Task();
-			task.content = "hello";
-			task.image = new String(Base64.getEncoder().encode(out.toByteArray()));
-			task.save();
+			
 			System.out.println("Image downloaded...");
 			return "abc";
 		} catch (Exception e) {
@@ -53,7 +50,7 @@ public class HomeService {
 				builder.append(line);
 				line = reader.readLine();
 			}
-			System.out.println("Length: " + builder.toString().length());
+			System.out.println("Length: " + builder.toString().length() + " : " + reader);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

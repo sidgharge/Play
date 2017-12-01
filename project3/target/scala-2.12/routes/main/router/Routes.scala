@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/bridgeit/Sid/Play/project3/conf/routes
-// @DATE:Thu Nov 30 18:57:02 IST 2017
+// @DATE:Fri Dec 01 18:53:37 IST 2017
 
 package router
 
@@ -54,6 +54,8 @@ class Routes(
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """imgsmall""", """controllers.HomeController.imgSmall()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """imgbig""", """controllers.HomeController.imgBig()"""),
     ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """read""", """controllers.HomeController.readFile()"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """jwt/""" + "$" + """jwt<[^.]*[.][^.]*[.][^.]*>""", """controllers.HomeController.parseJWT(jwt:String)"""),
+    ("""GET""", this.prefix + (if(this.prefix.endsWith("/")) "" else "/") + """jwt/""" + "$" + """id<[^.]*>""", """controllers.HomeController.generateJWT(id:String)"""),
     Nil
   ).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
     case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
@@ -313,6 +315,42 @@ class Routes(
     )
   )
 
+  // @LINE:51
+  private[this] lazy val controllers_HomeController_parseJWT14_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("jwt/"), DynamicPart("jwt", """[^.]*[.][^.]*[.][^.]*""",false)))
+  )
+  private[this] lazy val controllers_HomeController_parseJWT14_invoker = createInvoker(
+    HomeController_0.parseJWT(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "parseJWT",
+      Seq(classOf[String]),
+      "GET",
+      this.prefix + """jwt/""" + "$" + """jwt<[^.]*[.][^.]*[.][^.]*>""",
+      """Parse JWT""",
+      Seq()
+    )
+  )
+
+  // @LINE:54
+  private[this] lazy val controllers_HomeController_generateJWT15_route = Route("GET",
+    PathPattern(List(StaticPart(this.prefix), StaticPart(this.defaultPrefix), StaticPart("jwt/"), DynamicPart("id", """[^.]*""",false)))
+  )
+  private[this] lazy val controllers_HomeController_generateJWT15_invoker = createInvoker(
+    HomeController_0.generateJWT(fakeValue[String]),
+    play.api.routing.HandlerDef(this.getClass.getClassLoader,
+      "router",
+      "controllers.HomeController",
+      "generateJWT",
+      Seq(classOf[String]),
+      "GET",
+      this.prefix + """jwt/""" + "$" + """id<[^.]*>""",
+      """Generate JWT""",
+      Seq()
+    )
+  )
+
 
   def routes: PartialFunction[RequestHeader, Handler] = {
   
@@ -398,6 +436,18 @@ class Routes(
     case controllers_HomeController_readFile13_route(params@_) =>
       call { 
         controllers_HomeController_readFile13_invoker.call(HomeController_0.readFile())
+      }
+  
+    // @LINE:51
+    case controllers_HomeController_parseJWT14_route(params@_) =>
+      call(params.fromPath[String]("jwt", None)) { (jwt) =>
+        controllers_HomeController_parseJWT14_invoker.call(HomeController_0.parseJWT(jwt))
+      }
+  
+    // @LINE:54
+    case controllers_HomeController_generateJWT15_route(params@_) =>
+      call(params.fromPath[String]("id", None)) { (id) =>
+        controllers_HomeController_generateJWT15_invoker.call(HomeController_0.generateJWT(id))
       }
   }
 }

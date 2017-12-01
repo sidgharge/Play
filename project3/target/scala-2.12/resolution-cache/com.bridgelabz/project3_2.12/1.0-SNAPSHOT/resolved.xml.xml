@@ -4,7 +4,7 @@
 		module="project3_2.12"
 		revision="1.0-SNAPSHOT"
 		status="integration"
-		publication="20171128174118"
+		publication="20171201181823"
 	>
 		<description>
 		project3
@@ -52,5 +52,6 @@
 		<dependency org="com.typesafe.play" name="play-logback_2.12" rev="2.6.7" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.play" name="play-akka-http-server_2.12" rev="2.6.7" conf="compile->default(compile)"/>
 		<dependency org="com.typesafe.play" name="play-guice_2.12" rev="2.6.7" conf="compile->default(compile)"/>
+		<dependency org="com.nimbusds" name="nimbus-jose-jwt" rev="3.8.2" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
